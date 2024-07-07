@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_port/constants/colors.dart';
 import 'package:flutter_port/styles/style.dart';
+import 'package:flutter_port/widgets/drawer_mobile.dart';
 import 'package:flutter_port/widgets/header.desktop.dart';
 import 'package:flutter_port/widgets/header_mobile.dart';
 import 'package:flutter_port/widgets/site_logo.dart';
@@ -21,40 +23,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: CustomColor.scaffoldBg,
-      endDrawer: Drawer(
-        backgroundColor: CustomColor.scaffoldBg,
-        child: ListView(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                left: 20,
-                top: 20,
-                bottom: 20,
-              ), // EdgeInsets.only
-              child: IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.close),
-              ), // IconButton
-            ), // Padding
-            for(int i = 0; i<navIcons.length; i++)
-            ListTile(
-              contentPadding:const EdgeInsets.symmetric(
-                horizontal: 30.0,
-              ), // EdgeInsets.symmetric
-              titleTextStyle:const TextStyle(
-                color: CustomColor.whitePrimary,
-                fontWeight: fontWeight.w600,
-                fontSize: 16,
-              ), // TextStyle
-              onTap: () {
-
-              },
-              leading: Icon(navIcons[i]),
-              title: Text(navTitles[i]),
-            ) // ListTile
-          ]
-        )
-      ),
+      endDrawer: const DrawerMobile(),
       body: ListView(
         scrollDirection: Axis.vertical,
         children: [
@@ -63,7 +32,7 @@ class _HomePageState extends State<HomePage> {
           HeaderMobile(
             onLogoTap: () {},
             onMenuTap: () {
-              scaffoldKey.currentState?.openEndDraer();
+              scaffoldKey.currentState?.openEndDrawer();
             },
           ),
 
