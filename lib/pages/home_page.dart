@@ -25,6 +25,17 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: CustomColor.scaffoldBg,
         child: ListView(
           children: [
+            Padding(
+              padding: const EdgeInsets.only(
+                left: 20,
+                top: 20,
+                bottom: 20,
+              ), // EdgeInsets.only
+              child: IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.close),
+              ), // IconButton
+            ), // Padding
             for(int i = 0; i<navIcons.length; i++)
             ListTile(
               contentPadding:const EdgeInsets.symmetric(
