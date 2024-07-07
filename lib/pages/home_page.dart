@@ -15,10 +15,35 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldKey,
       backgroundColor: CustomColor.scaffoldBg,
+      endDrawer: Drawer(
+        backgroundColor: CustomColor.scaffoldBg,
+        child: ListView(
+          children: [
+            for(int i = 0; i<navIcons.length; i++)
+            ListTile(
+              contentPadding:const EdgeInsets.symmetric(
+                horizontal: 30.0,
+              ), // EdgeInsets.symmetric
+              titleTextStyle:const TextStyle(
+                color: CustomColor.whitePrimary,
+                fontWeight: fontWeight.w600,
+                fontSize: 16,
+              ), // TextStyle
+              onTap: () {
+
+              },
+              leading: Icon(navIcons[i]),
+              title: Text(navTitles[i]),
+            ) // ListTile
+          ]
+        )
+      ),
       body: ListView(
         scrollDirection: Axis.vertical,
         children: [
@@ -26,7 +51,9 @@ class _HomePageState extends State<HomePage> {
           // HeaderDesktop(),
           HeaderMobile(
             onLogoTap: () {},
-            onMenuTap: () {},
+            onMenuTap: () {
+              scaffoldKey.currentState?.openEndDraer();
+            },
           ),
 
           // SKILLS
